@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gimnàs Sineu</title>
+<meta name="description" content="Gimnàs Sineu: sala de fitness, activitats dirigides, tatami, sauna i entrenament personalitzat al Pla de Mallorca. Obert cada dia de 6.00 a 22.00 h. Carrer de Tramuntana, 56, Sineu. Tel. 971 52 07 41.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap">
+<style>
+/* Layout: bandes alternes de pedra de marès i tinta fosca; tipografia ampla i monumental; filets de llautó com a únic ornament. Un sol tema, triat expressament. */
+:root{
+  --ink:#0E1517;
+  --ink-2:#152024;
+  --ink-line:rgba(233,226,212,.14);
+  --stone:#E9E2D4;
+  --stone-2:#DDD3C0;
+  --stone-line:rgba(14,21,23,.14);
+  --brass:#C9A264;
+  --brass-deep:#7E5E2C;
+  --fog:#A3ADAC;
+  --slate:#4E595A;
+  --body-dark:#2A3335;
+  --sand:#D2CBBD;
+  --ok:#7FB08A;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--ink);color:var(--stone);font-family:var(--display);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band{padding-block:clamp(64px,9vw,120px)}
+.band.stone{background:var(--stone);color:var(--ink)}
+.band.stone2{background:var(--stone-2);color:var(--ink)}
+.band.rule{border-top:1px solid var(--ink-line)}
+
+.eyebrow{font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.stone .eyebrow,.stone2 .eyebrow{color:var(--brass-deep)}
+h1,h2,h3{font-family:var(--display);font-stretch:125%;font-weight:800;line-height:1.04;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2{font-size:clamp(2rem,4.6vw,3.6rem);text-transform:uppercase}
+h3{font-size:1.15rem;font-stretch:110%;font-weight:700;letter-spacing:.01em}
+.lede{font-family:var(--serif);font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.5;font-weight:400;max-width:58ch;margin:0}
+.lede.on-dark{color:var(--sand)}
+p{margin:0;max-width:65ch}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--display);font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:16px 22px;border:1px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-brass{background:var(--brass);color:var(--ink)}
+.btn-brass:hover{background:var(--stone)}
+.btn-line{border-color:var(--ink-line);color:var(--stone);background:transparent}
+.btn-line:hover{border-color:var(--brass);color:var(--brass)}
+.stone .btn-line,.stone2 .btn-line,.cookie .btn-line{border-color:var(--stone-line);color:var(--ink)}
+.stone .btn-line:hover,.stone2 .btn-line:hover,.cookie .btn-line:hover{border-color:var(--brass-deep);color:var(--brass-deep)}
+.btn-ink{background:var(--ink);color:var(--stone)}
+.btn-ink:hover{background:var(--brass-deep)}
+
+/* Capçalera */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--ink) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--ink-line)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:72px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;margin-right:auto}
+.brand b{font-stretch:125%;font-weight:900;font-size:1.15rem;letter-spacing:.06em;text-transform:uppercase}
+.brand span{font-family:var(--serif);font-style:italic;color:var(--brass);font-size:.95rem}
+nav.main{display:flex;gap:26px}
+nav.main a{text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--fog);transition:color .2s}
+nav.main a:hover{color:var(--stone)}
+.top .btn{padding:12px 16px}
+@media (max-width:1020px){nav.main{display:none}}
+@media (max-width:520px){.brand span{display:none}.top .btn{padding:11px 12px;font-size:.8rem}}
+
+/* Portada */
+.hero{position:relative;overflow:hidden;padding-block:clamp(56px,8vw,104px) 0}
+.hero-mark{position:absolute;right:-2vw;top:clamp(40px,6vw,80px);font-stretch:125%;font-weight:900;font-size:clamp(8rem,24vw,22rem);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(201,162,100,.18);pointer-events:none;user-select:none;letter-spacing:-.02em}
+.hero .wrap{position:relative;display:grid;gap:32px}
+.coords{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fog);font-variant-numeric:tabular-nums}
+.hero h1{font-size:clamp(2.5rem,7vw,6.2rem);text-transform:uppercase;max-width:15ch}
+.hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;font-stretch:100%;text-transform:none;color:var(--brass);letter-spacing:0}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.status{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;letter-spacing:.04em;color:var(--stone)}
+.status i{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(127,176,138,.18)}
+.status.closed i{background:var(--brass);box-shadow:0 0 0 4px rgba(201,162,100,.18)}
+
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink-line);margin-top:24px}
+.fact{padding:28px 24px 32px 0;display:grid;gap:8px;min-width:0}
+.fact + .fact{padding-left:24px;border-left:1px solid var(--ink-line)}
+.fact strong{font-stretch:125%;font-weight:800;font-size:clamp(1.7rem,3vw,2.4rem);line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fact span{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fog)}
+@media (max-width:760px){.facts{grid-template-columns:1fr 1fr}.fact:nth-child(3){padding-left:0;border-left:0}.fact:nth-child(n+3){border-top:1px solid var(--ink-line)}}
+
+/* Seccions de dues columnes */
+.split{display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,6vw,96px);align-items:end}
+.split.top-align{align-items:start}
+.split > *{min-width:0}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.stack{display:grid;gap:22px}
+.body-serif{font-family:var(--serif);font-size:1.08rem;line-height:1.65;color:var(--body-dark)}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--stone-line);margin-top:12px}
+.pillar{padding:22px 20px 0 0;display:grid;gap:10px;align-content:start;min-width:0}
+.pillar + .pillar{padding-left:20px;border-left:1px solid var(--stone-line)}
+.pillar h3{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-deep)}
+.pillar p{font-family:var(--serif);font-size:.98rem;line-height:1.55;color:var(--body-dark)}
+@media (max-width:640px){.pillars{grid-template-columns:1fr}.pillar + .pillar{padding-left:0;border-left:0;border-top:1px solid var(--stone-line);margin-top:20px}}
+.values{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:8px 0 0}
+.values li{list-style:none;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:8px 12px;border:1px solid var(--stone-line)}
+
+/* Serveis */
+.services{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink-line);margin-top:48px}
+.svc{padding:32px 28px 36px 0;display:grid;gap:12px;align-content:start;border-bottom:1px solid var(--ink-line);min-width:0}
+.svc:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--ink-line)}
+.svc svg{width:34px;height:34px;stroke:var(--brass);fill:none;stroke-width:1.4}
+.svc p{color:var(--fog);font-size:.95rem}
+@media (max-width:860px){.services{grid-template-columns:1fr 1fr}.svc:not(:nth-child(3n+1)){padding-left:0;border-left:0}.svc:nth-child(even){padding-left:24px;border-left:1px solid var(--ink-line)}}
+@media (max-width:560px){.services{grid-template-columns:1fr}.svc:nth-child(even){padding-left:0;border-left:0}}
+
+/* Entrenament */
+.goals{list-style:none;padding:0;margin:44px 0 0;border-top:1px solid var(--stone-line)}
+.goals li{display:grid;grid-template-columns:4fr 7fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--stone-line);align-items:baseline}
+.goals li > *{min-width:0}
+.goals h3{font-size:clamp(1.2rem,2.2vw,1.6rem);text-transform:uppercase}
+.goals p{font-family:var(--serif);font-size:1.05rem;color:var(--body-dark)}
+@media (max-width:700px){.goals li{grid-template-columns:1fr;gap:8px}}
+.callout{margin-top:48px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding:28px;background:var(--ink);color:var(--stone)}
+.callout p{font-family:var(--serif);font-style:italic;font-size:1.2rem;max-width:44ch}
+
+/* Instal·lacions */
+.spaces{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.spaces > *{min-width:0}
+.big8{font-stretch:125%;font-weight:900;font-size:clamp(9rem,22vw,17rem);line-height:.8;color:var(--brass)}
+.space-list{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink-line)}
+.space-list li{padding:16px 0;border-bottom:1px solid var(--ink-line);font-weight:600;letter-spacing:.04em}
+.space-list li:nth-child(even){padding-left:20px;border-left:1px solid var(--ink-line)}
+@media (max-width:700px){.spaces{grid-template-columns:1fr}.big8{font-size:9rem}}
+
+/* Quotes */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px;border:1px solid var(--stone-line)}
+.plan{padding:36px 30px;display:grid;gap:18px;align-content:start;grid-template-rows:auto auto auto 1fr auto;min-width:0}
+.plan + .plan{border-left:1px solid var(--stone-line)}
+.plan.featured{background:var(--ink);color:var(--stone)}
+.plan .tag{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-deep)}
+.plan.featured .tag{color:var(--brass)}
+.plan h3{font-size:1.6rem;text-transform:uppercase}
+.amount{display:flex;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums}
+.amount strong{font-stretch:125%;font-weight:800;font-size:2.6rem;line-height:1}
+.amount span{font-size:.85rem;color:var(--slate);letter-spacing:.04em}
+.plan.featured .amount span{color:var(--fog)}
+.amount.ask strong{font-family:var(--serif);font-style:italic;font-weight:400;font-stretch:100%;font-size:1.25rem}
+.plan ul{list-style:none;padding:0;margin:0;display:grid;gap:10px;align-content:start}
+.plan li{display:flex;gap:10px;font-size:.95rem}
+.plan li::before{content:"";width:14px;height:1px;background:currentColor;margin-top:.75em;flex:none;opacity:.6}
+@media (max-width:860px){.plans{grid-template-columns:1fr}.plan + .plan{border-left:0;border-top:1px solid var(--stone-line)}}
+
+/* Horari */
+.week{margin-top:44px;display:grid;gap:8px;font-variant-numeric:tabular-nums}
+.day,.scale{display:grid;grid-template-columns:110px 1fr 140px;gap:18px;align-items:center}
+.day{padding:6px 0}
+.day > *{min-width:0}
+.day .d{font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--fog)}
+.day.today .d{color:var(--brass)}
+.track{position:relative;height:12px;background:rgba(233,226,212,.06)}
+.track::after{content:"";position:absolute;top:0;bottom:0;left:25%;width:66.667%;background:var(--stone)}
+.day.today .track::after{background:var(--brass)}
+.day .h{font-weight:600;text-align:right;white-space:nowrap}
+.scale{font-size:.7rem;color:var(--fog);letter-spacing:.06em}
+.scale div{position:relative;height:16px}
+.scale span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.scale span.first{transform:none}
+.d .short{display:none}
+@media (max-width:600px){.scale span.first{display:none}.day,.scale{grid-template-columns:34px 1fr 96px;gap:10px}.d .full{display:none}.d .short{display:inline}.day .h{font-size:.9rem}}
+.week-note{margin-top:32px;color:var(--fog)}
+.week-note a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--brass)}
+
+/* Contacte */
+.contact{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,6vw,80px);align-items:end}
+.contact > *{min-width:0}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+.telrow{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.bigtel{text-decoration:none;font-stretch:125%;font-weight:900;font-size:clamp(2.3rem,7vw,5.4rem);line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;border-bottom:2px solid var(--brass);padding-bottom:6px;transition:color .2s;white-space:nowrap}
+.bigtel:hover{color:var(--brass)}
+.copy{background:none;border:1px solid var(--ink-line);color:var(--fog);font:600 .72rem var(--display);letter-spacing:.12em;text-transform:uppercase;padding:9px 12px;cursor:pointer}
+.copy:hover{color:var(--stone);border-color:var(--stone)}
+.dl{display:grid;border-top:1px solid var(--ink-line);margin:0}
+.dl > div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--ink-line)}
+.dl dt{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);padding-top:3px}
+.dl dd{margin:0;min-width:0}
+.dl a{text-decoration:none;border-bottom:1px solid var(--ink-line)}
+.dl a:hover{border-color:var(--brass);color:var(--brass)}
+.social{display:flex;gap:18px;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--ink-line);padding-block:28px;font-size:.8rem;color:var(--fog)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:space-between;align-items:center}
+.linkbtn{background:none;border:0;padding:0;color:var(--fog);font:inherit;cursor:pointer}
+.linkbtn:hover{color:var(--stone)}
+
+/* Barra de mòbil */
+.callbar{display:none}
+@media (max-width:700px){
+  .callbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--ink);border-top:1px solid var(--ink-line);padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));gap:8px}
+  .callbar .btn{padding:14px 10px}
+  body{padding-bottom:78px}
+}
+
+/* Cookies */
+.cookie{position:fixed;z-index:70;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(400px,calc(100% - 32px));background:var(--stone);color:var(--ink);padding:20px;display:grid;gap:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+.cookie p{font-size:.85rem;line-height:1.5}
+.cookie .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cookie .btn{padding:12px 10px;font-size:.78rem}
+@media (max-width:700px){.cookie{left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));width:auto;bottom:calc(90px + env(safe-area-inset-bottom,0px))}}
+
+.reveal{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.reveal.d2{animation-delay:.08s}.reveal.d3{animation-delay:.16s}.reveal.d4{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inici" aria-label="Gimnàs Sineu, inici"><b>Gimnàs Sineu</b><span>Pla de Mallorca</span></a>
+    <nav class="main" aria-label="Menú principal">
+      <a href="#centre">El centre</a>
+      <a href="#serveis">Serveis</a>
+      <a href="#entrenament">Entrenament</a>
+      <a href="#quotes">Quotes</a>
+      <a href="#horari">Horari</a>
+      <a href="#contacte">Contacte</a>
+    </nav>
+    <a class="btn btn-brass" href="tel:+34971520741" aria-label="Telefona al 971 52 07 41">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      971 52 07 41
+    </a>
+  </div>
+</header>
+
+<main id="inici">
+  <section class="hero" aria-labelledby="titol">
+    <div class="hero-mark" aria-hidden="true">SINEU</div>
+    <div class="wrap">
+      <div class="coords reveal">39°39′ N · 3°00′ E · Carrer de Tramuntana, 56 · Sineu</div>
+      <h1 id="titol" class="reveal d2">Entrena amb <em>professionals.</em> Cada dia, de 6 a 22&nbsp;h.</h1>
+      <p class="lede on-dark reveal d3">Sala de fitness, activitats dirigides, tatami i sauna, amb un equip titulat que fa el seguiment personal de cada usuari. Per a nins, joves, adults i gent major.</p>
+      <div class="hero-actions reveal d4">
+        <a class="btn btn-brass" href="tel:+34971520741">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          Telefona'ns
+        </a>
+        <a class="btn btn-line" href="#quotes">Veure les quotes</a>
+      </div>
+      <div class="status reveal d4" id="status" aria-live="polite"><i></i><span id="status-text">Obert cada dia de 6.00 a 22.00 h</span></div>
+
+      <div class="facts">
+        <div class="fact"><strong>6–22 h</strong><span>Horari d'obertura</span></div>
+        <div class="fact"><strong>7 dies</strong><span>Obert tota la setmana</span></div>
+        <div class="fact"><strong>8 sales</strong><span>D'entrenament</span></div>
+        <div class="fact"><strong>3 quotes</strong><span>Segons l'edat</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band stone" id="centre" aria-labelledby="centre-titol">
+    <div class="wrap split top-align">
+      <div class="stack">
+        <div class="eyebrow">El centre</div>
+        <h2 id="centre-titol">Proximitat i rigor</h2>
+      </div>
+      <div class="stack">
+        <p class="lede">Som un equip de professionals de l'esport amb formació universitària i anys d'experiència. Coneixem cada usuari pel seu nom i pel seu objectiu.</p>
+        <p class="body-serif">Els nostres monitors combinen els estudis en la matèria (llicenciatures, màsters, cursos i seminaris) amb la feina diària a la sala. Aquesta formació contínua ens permet entendre què necessita cada persona i acompanyar-la fins que ho aconsegueix.</p>
+        <div class="pillars">
+          <div class="pillar"><h3>Missió</h3><p>Fomentar l'activitat física per a la salut i el benestar, a totes les edats.</p></div>
+          <div class="pillar"><h3>Visió</h3><p>Esser el centre esportiu de referència del Pla de Mallorca.</p></div>
+          <div class="pillar"><h3>Mètode</h3><p>Activitats actuals, divertides i eficaces, guiades per professionals.</p></div>
+        </div>
+        <ul class="values" aria-label="Els nostres valors">
+          <li>Professionalitat</li>
+          <li>Proximitat</li>
+          <li>Formació contínua</li>
+          <li>Superació</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="serveis" aria-labelledby="serveis-titol">
+    <div class="wrap">
+      <div class="stack">
+        <div class="eyebrow">Serveis</div>
+        <h2 id="serveis-titol">Tot davall un mateix sostre</h2>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M3 17h28M7 11v12M11 8v18M23 8v18M27 11v12"/></svg>
+          <h3>Sala de fitness</h3>
+          <p>Màquines de força i de cardio, pes lliure i assessorament del monitor a la sala.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="7" r="3"/><path d="M17 10v10M10 15l7-2 7 2M12 30l5-10 5 10"/></svg>
+          <h3>Activitats dirigides</h3>
+          <p>Classes en grup durant tota la setmana, per a tots els nivells.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 34 34" aria-hidden="true"><rect x="4" y="9" width="26" height="16"/><path d="M4 17h26M17 9v16"/></svg>
+          <h3>Tatami i judo</h3>
+          <p>Espai de tatami amb classes de judo per a nins i adults.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M5 28h24M8 28V18h18v10M12 14c0-3 3-3 3-6M17 14c0-3 3-3 3-6M22 14c0-3 3-3 3-6"/></svg>
+          <h3>Sauna</h3>
+          <p>Recuperació després de l'entrenament. També hi pots venir només per a la sauna.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 4v26M12 8h10M11 13h12M12 18h10M13 23h8"/></svg>
+          <h3>Quiropràctica i massatges</h3>
+          <p>Tractaments per a l'esquena, descàrregues musculars i recuperació.</p>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 30c-7 0-11-5-11-11 0-5 3-8 7-8 2 0 3 1 4 1s2-1 4-1c4 0 7 3 7 8 0 6-4 11-11 11zM17 11c0-4 2-6 5-7"/></svg>
+          <h3>Nutrició i dietètica</h3>
+          <p>Assessorament nutricional coordinat amb el teu pla d'entrenament.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band stone2" id="entrenament" aria-labelledby="entrenament-titol">
+    <div class="wrap">
+      <div class="split">
+        <div class="stack">
+          <div class="eyebrow">Entrenament personalitzat</div>
+          <h2 id="entrenament-titol">Cada persona, un objectiu</h2>
+        </div>
+        <p class="lede">Cada usuari rep un entrenament adaptat a les seves característiques. Aquests són els objectius amb què feim feina cada dia.</p>
+      </div>
+      <ul class="goals">
+        <li><h3>Salut i benestar</h3><p>Pèrdua de pes i manteniment de la forma física, amb un pla realista i sostenible.</p></li>
+        <li><h3>Rendiment</h3><p>Preparació per a una prova concreta i millora física per a esports individuals i d'equip.</p></li>
+        <li><h3>Esquena i postura</h3><p>Mals d'esquena i descompensacions musculars, amb un treball progressiu i controlat.</p></li>
+        <li><h3>Lesions</h3><p>Recuperació i readaptació després d'esquinços de turmell, operacions de lligament encreuat o colze de tennista.</p></li>
+        <li><h3>Oposicions</h3><p>Preparació específica de les proves físiques de cossos de seguretat, bombers i altres oposicions.</p></li>
+      </ul>
+      <div class="callout">
+        <p>Explica'ns el teu objectiu i et proposarem com aconseguir-lo.</p>
+        <a class="btn btn-brass" href="tel:+34971520741">Telefona al 971 52 07 41</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="installacions" aria-labelledby="installacions-titol">
+    <div class="wrap spaces">
+      <div class="big8" aria-hidden="true">8</div>
+      <div class="stack">
+        <div class="eyebrow">Instal·lacions</div>
+        <h2 id="installacions-titol">Vuit sales a ple centre de Sineu</h2>
+        <p class="lede on-dark">Espais pensats per a cada tipus d'entrenament, amb material actual i ben cuidat.</p>
+        <ul class="space-list">
+          <li>Sala de fitness</li>
+          <li>Sales d'activitats dirigides</li>
+          <li>Tatami</li>
+          <li>Sauna</li>
+        </ul>
+        <div><a class="btn btn-line" href="tel:+34971520741">Demana una visita</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band stone" id="quotes" aria-labelledby="quotes-titol">
+    <div class="wrap">
+      <div class="split">
+        <div class="stack">
+          <div class="eyebrow">Quotes</div>
+          <h2 id="quotes-titol">Una quota per a cada edat</h2>
+        </div>
+        <p class="lede">Totes les quotes inclouen la sala de fitness, les activitats dirigides i l'accés tots els dies de la setmana.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <span class="tag">Joves</span>
+          <h3>Menors de 18 anys</h3>
+          <div class="amount" data-price="joves"></div>
+          <ul>
+            <li>Sala de fitness</li>
+            <li>Activitats dirigides</li>
+            <li>Accés tots els dies</li>
+          </ul>
+          <a class="btn btn-line" href="tel:+34971520741">Demana informació</a>
+        </div>
+        <div class="plan featured">
+          <span class="tag">La més completa</span>
+          <h3>Quota general</h3>
+          <div class="amount" data-price="general"></div>
+          <ul>
+            <li>Sala de fitness</li>
+            <li>Activitats dirigides</li>
+            <li>Accés tots els dies, de 6 a 22 h</li>
+          </ul>
+          <a class="btn btn-brass" href="tel:+34971520741">Demana informació</a>
+        </div>
+        <div class="plan">
+          <span class="tag">Gent major</span>
+          <h3>Majors de 65 anys</h3>
+          <div class="amount" data-price="majors"></div>
+          <ul>
+            <li>Sala de fitness</li>
+            <li>Activitats dirigides</li>
+            <li>Accés tots els dies</li>
+          </ul>
+          <a class="btn btn-line" href="tel:+34971520741">Demana informació</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="horari" aria-labelledby="horari-titol">
+    <div class="wrap">
+      <div class="split">
+        <div class="stack">
+          <div class="eyebrow">Horari</div>
+          <h2 id="horari-titol">Obert els set dies</h2>
+        </div>
+        <p class="lede on-dark">Setze hores cada dia per entrenar abans de la feina, a migdia o al vespre.</p>
+      </div>
+      <div class="week" id="week">
+        <div class="scale" aria-hidden="true"><div></div><div><span class="first" style="left:0">0 h</span><span style="left:25%">6 h</span><span style="left:50%">12 h</span><span style="left:75%">18 h</span><span style="left:91.667%">22 h</span></div><div></div></div>
+      </div>
+      <p class="week-note">Per conèixer l'horari de les classes dirigides, <a href="tel:+34971520741">telefona'ns</a> o demana-ho a recepció.</p>
+    </div>
+  </section>
+
+  <section class="band rule" id="contacte" aria-labelledby="contacte-titol">
+    <div class="wrap contact">
+      <div class="stack">
+        <div class="eyebrow">Contacte</div>
+        <h2 id="contacte-titol">Parla amb nosaltres</h2>
+        <div class="telrow">
+          <a class="bigtel" href="tel:+34971520741">971 52 07 41</a>
+          <button type="button" class="copy" id="copy-tel">Copiar</button>
+        </div>
+        <p style="color:var(--fog)">T'atendrem de manera ràpida i personalitzada.</p>
+      </div>
+      <dl class="dl">
+        <div><dt>Adreça</dt><dd>Carrer de Tramuntana, 56<br>07510 Sineu (Mallorca)<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Carrer+de+Tramuntana+56+07510+Sineu" target="_blank" rel="noopener">Com hi pots arribar →</a></dd></div>
+        <div><dt>Telèfon</dt><dd><a href="tel:+34971520741">971 52 07 41</a></dd></div>
+        <div><dt>Horari</dt><dd>De dilluns a diumenge,<br>de 6.00 a 22.00 h</dd></div>
+        <div><dt>Xarxes</dt><dd class="social">
+          <a href="https://www.instagram.com/gimnassineu/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/gimnas.sineu/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.youtube.com/channel/UCqZ2in7XifkcVuzpMjj8Ryw" target="_blank" rel="noopener">YouTube</a>
+        </dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2016 Gimnàs Sineu · Carrer de Tramuntana, 56 · Sineu</span>
+    <button type="button" class="linkbtn" id="cookie-settings">Configuració de cookies</button>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-brass" href="tel:+34971520741">Telefona</a>
+  <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Carrer+de+Tramuntana+56+07510+Sineu" target="_blank" rel="noopener">Com arribar</a>
+</div>
+
+<div class="cookie" id="cookie" role="dialog" aria-label="Avís de cookies" hidden>
+  <p>Feim servir cookies tècniques, que són necessàries, i, només si les acceptes, cookies d'estadística per millorar la web.</p>
+  <div class="row">
+    <button type="button" class="btn btn-ink" id="ck-si">Acceptar</button>
+    <button type="button" class="btn btn-line" id="ck-no">Rebutjar</button>
+  </div>
+</div>
+
+<script>
+/* PREUS DE LES QUOTES — escriu només el número (per exemple 35 o 29,90). Si queda buit, la targeta mostra «Preu a consultar». */
+var PREUS = { joves: "", general: "", majors: "" };
+var PERIODE = "al mes";
+
+(function(){
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+  // Preus: número + € al costat
+  document.querySelectorAll('[data-price]').forEach(function(el){
+    var v=String(PREUS[el.getAttribute('data-price')]||'').trim();
+    if(v){ el.innerHTML='<strong>'+v.replace('.',',')+' €</strong><span>'+PERIODE+'</span>'; }
+    else { el.classList.add('ask'); el.innerHTML='<strong>Preu a consultar</strong>'; }
+  });
+
+  // Hora de Mallorca
+  function ara(){
+    var p=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()),o={};
+    p.forEach(function(x){o[x.type]=x.value});
+    return {dia:{Mon:0,Tue:1,Wed:2,Thu:3,Fri:4,Sat:5,Sun:6}[o.weekday],min:(parseInt(o.hour,10)%24)*60+parseInt(o.minute,10)};
+  }
+  function estat(){
+    var t=ara(),obert=t.min>=360&&t.min<1320,el=document.getElementById('status');
+    el.classList.toggle('closed',!obert);
+    document.getElementById('status-text').textContent=obert?'Obert ara · fins a les 22.00 h':(t.min<360?'Tancat ara · obrim a les 6.00 h':'Tancat ara · demà obrim a les 6.00 h');
+  }
+
+  // Setmana
+  var dies=['Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte','Diumenge'],curt=['Dl','Dt','Dc','Dj','Dv','Ds','Dg'];
+  var w=document.getElementById('week'),avui=ara().dia;
+  for(var i=0;i<7;i++){
+    var r=document.createElement('div');r.className='day'+(i===avui?' today':'');
+    r.innerHTML='<span class="d"><span class="full">'+dies[i]+'</span><span class="short">'+curt[i]+'</span></span><div class="track" aria-hidden="true"></div><span class="h">6.00–22.00 h</span>';
+    w.appendChild(r);
+  }
+
+  // Copiar el telèfon
+  var cb=document.getElementById('copy-tel');
+  cb.addEventListener('click',function(){
+    function fet(){cb.textContent='Copiat';setTimeout(function(){cb.textContent='Copiar'},1800)}
+    function sel(){var r=document.createRange();r.selectNodeContents(document.querySelector('.bigtel'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText('971 52 07 41').then(fet,sel)}else sel();
+  });
+
+  // Cookies
+  var ck=document.getElementById('cookie');
+  if(!get('gs-cookies')) ck.hidden=false;
+  document.getElementById('ck-si').onclick=function(){set('gs-cookies','si');ck.hidden=true};
+  document.getElementById('ck-no').onclick=function(){set('gs-cookies','no');ck.hidden=true};
+  document.getElementById('cookie-settings').onclick=function(){ck.hidden=false};
+
+  estat();setInterval(estat,60000);
+})();
+</script>
+</body>
+</html>
